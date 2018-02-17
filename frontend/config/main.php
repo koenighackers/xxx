@@ -43,6 +43,7 @@ return [
             'enableStrictParsing' => false,
             'rules' => [
                 '<alias:index|about|contact|registration|login|logout|reset-password|request-password-reset>' => 'site/<alias>',
+                's/<shopName:\w*>' => 'shop/index',
             ],
         ],
         
