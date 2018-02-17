@@ -1,120 +1,96 @@
-html,
-body {
+html, body {
     height: 100%;
 }
 
-.wrap {
-    min-height: 100%;
-    height: auto;
-    margin: 0 auto -60px;
-    padding: 0 0 60px;
+body {
+    font-family: 'Alegreya Sans', sans-serif;
 }
 
-.wrap > .container {
-    padding: 70px 15px 20px;
+.container {
+    height: 100%;
 }
 
-.footer {
-    height: 60px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
-    padding-top: 20px;
+.sidebar {
+    background-color: #eeeeee !important;
+    width: 270px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
 }
 
-.jumbotron {
-    text-align: center;
-    background-color: transparent;
+.content {
+    position: absolute;
+    left: 270px;
 }
 
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+.sidebar, .content {
+    height: 100%;
+    padding: 0;
 }
 
-.not-set {
-    color: #c55;
-    font-style: italic;
+.sidebar__header {
+    height: 50px;
+    padding: 10px;
 }
 
-/* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    padding-left: 5px;
+.sidebar__header h1 {
+    margin-top: 0;
 }
 
-a.asc:after {
-    content: "\e151";
+.sd {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 18px;
 }
 
-a.desc:after {
-    content: "\e152";
-}
-
-.sort-numerical a.asc:after {
-    content: "\e153";
-}
-
-.sort-numerical a.desc:after {
-    content: "\e154";
-}
-
-.sort-ordinal a.asc:after {
-    content: "\e155";
-}
-
-.sort-ordinal a.desc:after {
-    content: "\e156";
-}
-
-.grid-view td {
-    white-space: nowrap;
-}
-
-.grid-view .filters input,
-.grid-view .filters select {
-    min-width: 50px;
-}
-
-.hint-block {
+.sd-item__link {
     display: block;
-    margin-top: 5px;
-    color: #999;
+    margin: 5px 0;
+    text-decoration: none;
+    border-bottom: 1px solid #909090;
 }
 
-.error-summary {
-    color: #a94442;
-    background: #fdf7f7;
-    border-left: 3px solid #eed3d7;
-    padding: 10px 20px;
-    margin: 0 0 15px 0;
-}
-
-/* align the logout "link" (button in form) of the navbar */
-.nav li > form > button.logout {
-    padding: 15px;
-    border: none;
-}
-
-@media(max-width:767px) {
-    .nav li > form > button.logout {
-        display:block;
-        text-align: left;
-        width: 100%;
-        padding: 10px 15px;
-    }
-}
-
-.nav > li > form > button.logout:focus,
-.nav > li > form > button.logout:hover {
+.sd-item__link:hover {
     text-decoration: none;
 }
 
-.nav > li > form > button.logout:focus {
-    outline: none;
+.c-cart {
+    background-color: #dfdfdf;
+    padding: 12px;
+}
+
+.c-cart__previews {
+}
+
+.simple {
+    width: 100px;
+    height: 100px;
+    background-color: #2b669a;
+    margin-right: 12px;
+    flex-shrink: 0;
+    float: left;
+}
+
+.simple--big {
+    width: 300px;
+    height: 400px;
+    margin-bottom: 12px;
+}
+
+.c-wrapper {
+    height: calc(100% - 150px);
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.c-wrapper__header {
+    width: 100%;
+}
+
+.c-wrapper__products {
+}
+
+.c-wrapper__products .simple {
+    float: left;
 }
