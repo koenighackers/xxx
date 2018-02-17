@@ -11,6 +11,7 @@ use yii\db\ActiveRecord;
 class Categories {
 
     public static $limit = 10;
+    public static $showInactive = false;
 
     /**
      * Get list of the user categories
@@ -19,14 +20,21 @@ class Categories {
      */
     public static function getList($options = [])
     {
+        $query = Category::find()->where(['user_id' => \Yii::$app->user->identity->getId()]);
+
         if (isset($options['limit'])) {
             self::$limit = $options['limit'];
         }
 
-        return Category::find()
-            ->where(['user_id' => \Yii::$app->user->identity->getId()])
-            ->limit(self::$limit)
-            ->all();
+        if (isset($options['showInactive'])) {
+            self::$showInactive = $options['showInactive'];
+        }
+
+        if (!self::$showInactive) {
+            $query->andWhere(['status' => true]);
+        }
+
+        return $query->limit(self::$limit)->all();
     }
 
 }
