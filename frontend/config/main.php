@@ -40,7 +40,9 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => false,
             'rules' => [
+                '<alias:index|about|contact|registration|login|logout|reset-password|request-password-reset>' => 'site/<alias>',
             ],
         ],
         
