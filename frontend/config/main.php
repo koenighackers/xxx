@@ -42,7 +42,8 @@ return [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
-                '<alias:index|about|contact|registration|login|logout|reset-password|request-password-reset>' => 'site/<alias>',
+                '/' => 'site/index',
+                '<action>' => 'site/<action>',
                 's/<shopName:\w*>' => 'shop/index',
             ],
         ],
