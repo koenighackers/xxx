@@ -16,11 +16,11 @@ class Categories {
     /**
      * Get list of the user categories
      * @param array $options additional options
-     * @return array|\yii\db\ActiveRecord[]
+     * @return Category[]
      */
     public static function getList($options = [])
     {
-        $query = Category::find()->where(['user_id' => \Yii::$app->user->identity->getId()]);
+        $query = Category::find()->where(['user_id' => \Yii::$app->params['shopOwner']->id]);
 
         if (isset($options['limit'])) {
             self::$limit = $options['limit'];
