@@ -32,7 +32,21 @@ $catList = \frontend\components\Categories::getList();
                 <h1><?= ucfirst(Yii::$app->params['shopName']) ?></h1>
             </div>
             <div class="sidebar__content sd">
-                <div class="sd__header">Сategories</div>
+                <div class="sd__header">Сategories <div class="pull-right btn btn-success btn-xs" @click="addCatFormHidden = !addCatFormHidden"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></div></div>
+                <div class="sd__add-cat-form" style="margin-top: 10px; background: #fff; padding: 5px;" v-if="!addCatFormHidden">
+                    <form action="#!" class="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Название">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Описание" style="resize: none;"></textarea>
+                        </div>
+                        <div class="text-right">
+                            <div class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+                            <div class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+                        </div>
+                    </form>
+                </div>
                 <div class="sd__items">
                     <?php
                     foreach ($catList as $catModel) :
@@ -86,7 +100,8 @@ $catList = \frontend\components\Categories::getList();
         el: '#sidebar',
         data: function () {
             return {
-                message: ''
+                message: '',
+                addCatFormHidden: true
             }
         },
         methods: {
