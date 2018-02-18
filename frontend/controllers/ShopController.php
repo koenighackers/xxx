@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Product;
 use Yii;
 use common\models\User;
 use yii\web\Controller;
@@ -44,15 +45,11 @@ class ShopController extends Controller
         ]);
     }
 
-    public function actionTest()
+    public function actionCategory($id)
     {
-        $response = [
-            'shopName' => Yii::$app->params['shopName'],
-            'message' => 'test' . time(),
-        ];
-
         Yii::$app->response->format = Response::FORMAT_JSON;
+        $products = Product::find()->where(['category_id' => $id])->asArray()->all();
 
-        return $response;
+        return $products;
     }
 }

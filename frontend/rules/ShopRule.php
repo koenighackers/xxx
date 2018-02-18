@@ -10,16 +10,6 @@ class ShopRule extends BaseObject implements UrlRuleInterface
 {
     public function createUrl($manager, $route, $params)
     {
-        var_dump($route);
-        die;
-
-        if ($route === 'car/index') {
-            if (isset($params['manufacturer'], $params['model'])) {
-                return $params['manufacturer'] . '/' . $params['model'];
-            } elseif (isset($params['manufacturer'])) {
-                return $params['manufacturer'];
-            }
-        }
         return false; // this rule does not apply
     }
 
@@ -48,7 +38,7 @@ class ShopRule extends BaseObject implements UrlRuleInterface
                 $action = $matches[2];
                 if (!empty($matches[3])) {
                     $param = $matches[3];
-                    return ['shop/' . $action, $param];
+                    return ['shop/' . $action, ['id' => $param]];
                 }
                 return ['shop/' . $action, []];
             }
