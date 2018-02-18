@@ -36,14 +36,19 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'enableStrictParsing' => false,
+            'normalizer' => [
+                'class' => 'yii\web\UrlNormalizer',
+                // use temporary redirection instead of permanent for debugging
+                'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
+            ],
             'rules' => [
                 '/' => 'site/index',
                 '<action>' => 'site/<action>',
+                new \frontend\rules\ShopRule(),
                 's/<shopName:\w*>' => 'shop/index',
             ],
         ],
