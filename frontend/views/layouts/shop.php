@@ -7,6 +7,8 @@ use yii\helpers\Html;
 use frontend\assets\AppAsset;
 
 AppAsset::register($this);
+
+$catList = \frontend\components\Categories::getList();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -15,52 +17,32 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,700&amp;subset=cyrillic" rel="stylesheet">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
 <div class="container-fluid">
     <div class="row">
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <div class="sidebar__header">
-                <h1>LOGO</h1>
+                <h1><?= ucfirst(Yii::$app->params['shopName']) ?></h1>
             </div>
             <div class="sidebar__content sd">
                 <div class="sd__header">Сategories</div>
                 <div class="sd__items">
-                    <a href="#!" class="sd-item__link">
-                        Item 1
-                    </a>
-                    <a href="#!" class="sd-item__link">
-                        Item 2
-                    </a>
-                    <a href="#!" class="sd-item__link">
-                        Item 3
-                    </a>
-                    <a href="#!" class="sd-item__link">
-                        Item 4
-                    </a>
-                    <a href="#!" class="sd-item__link">
-                        Item 5
-                    </a>
-                    <a href="#!" class="sd-item__link">
-                        Item 6
-                    </a>
-                    <a href="#!" class="sd-item__link">
-                        Item 7
-                    </a>
-                    <a href="#!" class="sd-item__link">
-                        Item 8
-                    </a>
-                    <a href="#!" class="sd-item__link">
-                        Item 9
-                    </a>
-                    <a href="#!" class="sd-item__link">
-                        Item 10
-                    </a>
+                    <?php
+                    foreach ($catList as $catModel) :
+                    ?>
+                        <a href="#!" class="sd-item__link" @click="refreshMessage">
+                            <?= $catModel->name ?>
+                        </a>
+                    <?php
+                    endforeach;
+                    ?>
                 </div>
             </div>
             <div class="sidebar__footer">#</div>
@@ -98,3 +80,25 @@ AppAsset::register($this);
 </body>
 </html>
 <?php $this->endPage() ?>
+
+<script>
+    var app = new Vue({
+        el: '#sidebar',
+        data: function () {
+            return {
+                message: ''
+            }
+        },
+        methods: {
+            refreshMessage: function () {
+                axios.get('/s/<?= Yii::$app->params['shopName'] ?>/test')
+                    .then(function (response) {
+                        app.message = response.data.message;
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    });
+            }
+        }
+    });
+</script>

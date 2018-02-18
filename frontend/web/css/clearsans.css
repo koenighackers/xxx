@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Clear Sans';
+    src: local('Clear Sans Thin'), local('ClearSans-Thin'), url('/fonts/clearsansthin.woff2') format('woff2'), url('/fonts/clearsansthin.woff') format('woff'), url('/fonts/clearsansthin.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Clear Sans';
+    src: local('Clear Sans Light'), local('ClearSans-Light'), url('/fonts/clearsanslight.woff2') format('woff2'), url('/fonts/clearsanslight.woff') format('woff'), url('/fonts/clearsanslight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Clear Sans';
+    src: local('Clear Sans Medium'), local('ClearSans-Medium'), url('/fonts/clearsansmedium.woff2') format('woff2'), url('/fonts/clearsansmedium.woff') format('woff'), url('/fonts/clearsansmedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Clear Sans';
+    src: local('Clear Sans Medium Italic'), local('ClearSans-MediumItalic'), url('/fonts/clearsansmediumitalic.woff2') format('woff2'), url('/fonts/clearsansmediumitalic.woff') format('woff'), url('/fonts/clearsansmediumitalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
